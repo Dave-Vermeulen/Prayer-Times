@@ -1,44 +1,47 @@
-# prayer-times
+# 🌅 Cape Town Prayer Times Dashboard
 
-FIXME: description
+_A sunset-colored dashboard delivering accurate Islamic prayer times for Cape Town, South Africa - updated daily via API magic._
 
-## Installation
+![Dashboard Preview](https://i.imgur.com/zO2cD5b.png)  
+*Designed with colors inspired by Cape sunsets: #fcd0a1, #6d1a36, #53917e*
 
-Download from http://example.com/FIXME.
+## ✨ Why This Rocks
+✅ **Real-time Aladhan API integration**  
+✅ **Auto-refreshing times** (set-it-and-forget-it)  
+✅ **Prophet's (ﷺ) dua** with Arabic/English display  
+✅ **Zero dependencies** (just pure Clojure + HTML/CSS)  
 
-## Usage
+## 🚀 10-Second Setup
+```bash
+git clone https://github.com/Dave-Vermeulen/Prayer-Times
+cd Prayer-Times
+lein run  # Bam! public/index.html is born
+```
 
-FIXME: explanation
+## 🛠️ Tech Stack
+```clojure
+[🧬 Clojure]  :for-elegant-code
+[🌐 Hiccup]   :html-as-data
+[⚡ Aladhan]  :prayer-times-api
+[🎨 CSS]      :handcrafted-styles
+```
 
-    $ java -jar prayer-times-0.1.0-standalone.jar [args]
+## 🔄 Auto-Update System
+**Cron Job Magic** (via GitHub Actions):  
+```yaml
+# .github/workflows/daily-refresh.yml
+- cron: '0 0 * * *'  # Midnight UTC daily
+```
+_Triggers rebuild → Commits new times → Vercel redeploys - fully automated!_
 
-## Options
+## 🌍 Live Demo
+**[prayer-times.vercel.app](https://prayer-times.vercel.app)**  
+*(Cape Towners - bookmark this!)*
 
-FIXME: listing of options this app accepts.
+---
 
-## Examples
+**Q: Will times update daily?**  
+**A:** Yes! The [Aladhan API](https://aladhan.com/prayer-times-api) provides fresh times daily. Our auto-deploy system ensures your dashboard always shows today's schedule.
 
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
-
-## License
-
-Copyright © 2025 FIXME
-
-This program and the accompanying materials are made available under the
-terms of the Eclipse Public License 2.0 which is available at
-http://www.eclipse.org/legal/epl-2.0.
-
-This Source Code may also be made available under the following Secondary
-Licenses when the conditions for such availability set forth in the Eclipse
-Public License, v. 2.0 are satisfied: GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or (at your
-option) any later version, with the GNU Classpath Exception which is available
-at https://www.gnu.org/software/classpath/license.html.
+*"Whoever eases a difficulty for a believer, Allah will ease his difficulties in this world and the Hereafter."*  
+– Prophet Muhammad (ﷺ) [Sahih Muslim]*
