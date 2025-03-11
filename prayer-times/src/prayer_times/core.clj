@@ -118,5 +118,5 @@
 
 (defn -main []
   (let [timings (fetch-prayer-times)]
-    (spit "prayer_times.html" (generate-html timings))
+    (spit "public/index.html" (generate-html timings))
   (println "✨ Beautiful HTML generated!")))
