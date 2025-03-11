@@ -10,10 +10,10 @@
                                :method "2"}} ;;islamic society of North America
 
         response (client/get url params)
-        body (json/parse-string (:body response) true)] ; parse json to Clojure map
-    (get-in body [:data :timings]))) ; extract the timings
+        body (json/parse-string (:body response) true) ; parse json to Clojure map
+   timings (get-in body [:data :timings])] timings)) ; return timings
 
-(def prayer-order ["Fajr" "Sunrise" "Dhuhr" "Asr" "Maghrib" "Isha"])
+(def prayer-order [:Fajr :Sunrise :Dhuhr :Asr :Maghrib :Isha])
 
 ;; make some html for the prayer times
 (defn generate-html [timings]
@@ -51,11 +51,20 @@
              th {
              background: #53917e;
              color: white;
-             padding: 1rem;
+             padding: 3rem;
+             text-align: left;
              }
              td {
-             padding: 1rem;
+             padding: 3rem;
+             text-align: left;
              border-bottom: 1px solid #b1b695;
+             }
+             th:nth-child(1), td:nth-child(1) {
+             width: 40%;
+             }
+             th:nth-child(2), td:nth-child(2) {
+             width: 60%;
+             text-align: right;
              }
              tr:nth-child(even) {
              background: #f8f8f8;
@@ -84,14 +93,16 @@
       [:tbody
        (for [prayer prayer-order
              :let [time (get timings prayer)]]
-         [:tr
-          [:td prayer] [:td time]])]]
+             [:tr
+              [:td (name prayer)]
+              [:td time]])]]
      
      [:div.prayer-text
       [:h2 {:style "color: #6d1a36;"} "The Prophet's Prayer (ﷺ)"]
      [:div.arabic
-      "بسم الله الرحمن الرحيم<br/>
-       اللهم إنّي أسألك بأنّي أشهد أنك أنت الله لا إله إلا أنت الأحد الصمد الذي لم يلد و لم يولد و لم يكن له كفوً أحد"]
+      "بسم الله الرحمن الرحيم" [:br]
+       "اللهم إنّي أسألك بأنّي أشهد أنك أنت الله لا إله إلا أنت الأحد الصمد الذي لم يلد و لم يولد و لم يكن له كفوً أحد"]
+     
      [:h3 "Pronunciation:"]
      "ALLAHUMMA INNI AS ALUKA BI ANNI ASH-HADDU INNAKA ANTALLA-HA LA ILAHA ILLA ANTAL AHADUS-SAMAD-ALLAZEE LAM YA LID WA LAM YOO LAD WA LAM YA KULLAHOO KUFUWWAN AHAD"
 
